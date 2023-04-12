@@ -30,8 +30,6 @@ ngOnInit() {
     }
     this.response.PostData("/Account/login",loginData).subscribe(
       (response) => { this.res = response;
-        console.log(this.res);
-        console.log(this.res.response.firstName);
         if(this.res.status==true)
         {
           if(loginData.Remember)
@@ -45,7 +43,7 @@ ngOnInit() {
             localStorage.removeItem('userPassword');
             localStorage.removeItem('IsRemember');
           }
-          localStorage.setItem('UserName',this.res.response.firstName);
+          localStorage.setItem('UserName',this.res.response.fullName);
            this.route.navigateByUrl('/admin/home');
         }
         else{

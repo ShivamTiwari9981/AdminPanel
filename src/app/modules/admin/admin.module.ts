@@ -10,7 +10,8 @@ import { AboutComponent } from './component/about/about.component';
 import { ContectUsComponent } from './component/contect-us/contect-us.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
-import { AppViewComponent } from './component/app-view/app-view.component'
+import { AppViewComponent } from './component/app-view/app-view.component';
+import { UserComponent } from './component/user/user.component'
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { AppViewComponent } from './component/app-view/app-view.component'
     HomeComponent,
     AboutComponent,
     ContectUsComponent,
-    AppViewComponent
+    AppViewComponent,
+    UserComponent
   ],
   imports: [
     CommonModule,

@@ -74,8 +74,8 @@
             </p>
           </a>
           <ul class="nav nav-treeview"*ngFor="let sub of m.subModules">
-            <li class="nav-item" >
-              <a routerLink={{sub.actionLink}} class="nav-link">
+            <li class="nav-item">
+              <a routerLink={{sub.routerLink}} class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>{{sub.subModuleName}}</p>
               </a>

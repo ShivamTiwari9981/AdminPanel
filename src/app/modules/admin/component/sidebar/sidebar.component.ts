@@ -21,8 +21,6 @@ export class SidebarComponent {
         console.log(this.res)
         console.log("this.res.response",this.res.response)
         return this.res;
-
-
        });
   }
 }
