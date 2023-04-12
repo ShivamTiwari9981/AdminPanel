@@ -12,15 +12,13 @@ import { ApiResponseService } from 'src/app/service/api-response.service';
 export class UserComponent {
   public res: IResponse | any;
   selectedFile: File|any;
-  UserName = localStorage.getItem('UserName');
   constructor(private response: ApiResponseService) {
     this.GetAllModule();
   }
   GetAllModule() {
     this.response.GetAllData('/User/getAll').subscribe((response) => {
       this.res = response;
-      console.log(this.res);
-      console.log('this.res.response', this.res.response);
+      console.log(this.res)
       return this.res;
     });
   }
@@ -55,17 +53,17 @@ export class UserComponent {
       Type: this.userForm.value.type,
       UserPassword: this.userForm.value.userPassword,
     }
+    console.log(model)
+  }
 
-    formData.append("FullName",this.userForm.value.fullName);
-    formData.append("Mobile",this.userForm.value.mobile);
-    formData.append("Email",this.userForm.value.email);
-    formData.append("ImageFile",this.selectedFile);
-    formData.append("Type",this.userForm.value.type);
-    formData.append("UserPassword",this.userForm.value.userPassword);
-    console.log("formData"+model.FullName)
-return false;
-  this.response.PostData("/Account/signup",formData).subscribe(
-    (response)=>{
-          console.log('response',response);
-     });
-}}
+  //   formData.append("FullName",this.userForm.value.fullName);
+  //   formData.append("Mobile",this.userForm.value.mobile);
+  //   formData.append("Email",this.userForm.value.email);
+  //   formData.append("ImageFile",this.selectedFile);
+  //   formData.append("Type",this.userForm.value.type);
+  //   formData.append("UserPassword",this.userForm.value.userPassword);
+  // this.response.PostData("/Account/signup",formData).subscribe(
+  //   (response)=>{
+  //         console.log('response',response);
+  //    });
+}
