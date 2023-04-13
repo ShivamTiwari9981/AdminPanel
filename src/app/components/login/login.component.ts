@@ -11,17 +11,21 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class LoginComponent {
   res:any;
+  submitted=false;
 constructor(private response:ApiResponseService,private route:Router){}
 ngOnInit() {
 }
-
-
   loginForm = new FormGroup({
-    userName: new FormControl('admin@gmail.com', Validators.required),
-    userPassword: new FormControl('1234', [Validators.required, Validators.maxLength(8)]),
+    userName: new FormControl('admin@gmail.com',[ Validators.required,Validators.email]),
+    userPassword: new FormControl('1234', [Validators.required, Validators.minLength(4)]),
     IsRemember: new FormControl(),
   })
   Submit(){
+    this.submitted=true;
+    if(this.loginForm.invalid)
+    {
+      return;
+    }
     localStorage.setItem('IsRemember', JSON.stringify(this.loginForm.value.IsRemember));
     let loginData:ILoginModel={
       Email:this.loginForm.value.userName??"",

@@ -24,8 +24,7 @@ export class UserComponent {
   }
 
   ngOnInit() {}
-  // url = '../../../../../assets/img/default-150x150.png';
-  url = '';
+  url = '../../../../../assets/img/default-150x150.png';
   onImageChange(e: any) {
     if (e.target.files) {
       var reader = new FileReader();
@@ -53,17 +52,16 @@ export class UserComponent {
       Type: this.userForm.value.type,
       UserPassword: this.userForm.value.userPassword,
     }
-    console.log(model)
-  }
-
-  //   formData.append("FullName",this.userForm.value.fullName);
-  //   formData.append("Mobile",this.userForm.value.mobile);
-  //   formData.append("Email",this.userForm.value.email);
-  //   formData.append("ImageFile",this.selectedFile);
-  //   formData.append("Type",this.userForm.value.type);
-  //   formData.append("UserPassword",this.userForm.value.userPassword);
-  // this.response.PostData("/Account/signup",formData).subscribe(
-  //   (response)=>{
-  //         console.log('response',response);
-  //    });
+    // formData.append("FullName",model.FullName);
+    // formData.append("Mobile",model.Mobile);
+    // formData.append("Email",model.Email);
+    // formData.append("ImageFile",this.selectedFile);
+    // formData.append("Type",model.Type);
+    // formData.append("UserPassword",model.UserPassword);
+    // console.log(formData)
+    // this.response.PostData("/User/add",formData).subscribe(
+    // (response)=>{
+    //       console.log('response',response);
+    //  });
+}
 }

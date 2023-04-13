@@ -10,21 +10,36 @@
         <p class="login-box-msg">Sign in to start your session</p>
         <form [formGroup]="loginForm" class="needs-validation" (ngSubmit)="Submit()">
           <div class="input-group mb-3">
-            <input type="email" class="form-control" id="exampleInputEmail1" name="email"  placeholder="Enter Email" formControlName="userName" autocomplete="true">
+            <input type="email" class="form-control" [ngClass]="{'is-invalid':submitted && loginForm.controls.userName.errors}" name="email"  placeholder="Enter Email" formControlName="userName" autocomplete="true">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-envelope"></span>
               </div>
             </div>
+            <div *ngif="submitted && loginForm.controls.userName.errors" class="text-danger">
+              <div *ngif="submitted && loginForm.controls.userName.errors.required">
+                 User Name is required!
+              </div>
+             </div>
           </div>
+
           <div class="input-group mb-3">
-            <input type="password" class="form-control" name="password" id="exampleInputPassword1"  placeholder="Password" formControlName="userPassword" autocomplete="true">
+            <input type="password" class="form-control" [ngClass]="{'is-invalid':submitted && loginForm.controls.userPassword.errors}" name="password"  placeholder="Password" formControlName="userPassword" autocomplete="true">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-lock"></span>
               </div>
             </div>
+
           </div>
+          <div class="row">
+            <div *ngIf="loginForm.controls.userPassword.errors?.['required']" class="text-danger">
+              User Password is Required
+            </div>
+            <div *ngIf="loginForm.controls.userPassword.errors?.['minlength']" class="text-danger">
+              Max length should be 6 character;
+            </div>
+         </div>
           <div class="row">
             <div class="col-8">
               <div class="icheck-primary">
