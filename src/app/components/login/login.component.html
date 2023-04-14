@@ -30,16 +30,20 @@
                 <span class="fas fa-lock"></span>
               </div>
             </div>
-
           </div>
           <div class="row">
-            <div *ngIf="loginForm.controls.userPassword.errors?.['required']" class="text-danger">
-              User Password is Required
+            <div *ngIf="submitted && loginForm.controls.userPassword.errors">
+              <div *ngIf="submitted && loginForm.controls.userPassword.errors?.['required']" class="text-danger">
+                User Password is Required..
+              </div>
+              <div *ngIf="submitted && loginForm.controls.userPassword.errors?.['minlength']" class="text-danger">
+                Max length should be 6 character..
+              </div>
+              <div *ngIf="submitted && loginForm.controls.userPassword.errors?.['pattern']" class="text-danger">
+                Minimum 6 characters, at least one uppercase letter, one lowercase letter and one number..
+              </div>
             </div>
-            <div *ngIf="loginForm.controls.userPassword.errors?.['minlength']" class="text-danger">
-              Max length should be 6 character;
-            </div>
-         </div>
+          </div>
           <div class="row">
             <div class="col-8">
               <div class="icheck-primary">
