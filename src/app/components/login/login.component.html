@@ -16,11 +16,6 @@
                 <span class="fas fa-envelope"></span>
               </div>
             </div>
-            <div *ngif="submitted && loginForm.controls.userName.errors" class="text-danger">
-              <div *ngif="submitted && loginForm.controls.userName.errors.required">
-
-              </div>
-             </div>
           </div>
           <div class="row">
             <div *ngIf="submitted && loginForm.controls.userName.errors">

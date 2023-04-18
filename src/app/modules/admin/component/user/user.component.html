@@ -1,11 +1,6 @@
 <section class="content">
   <div class="container-fluid">
-    <button
-      type="button"
-      class="btn btn-primary m-1"
-      data-toggle="modal"
-      data-target="#modal-lg"
-    >
+    <button type="button"class="btn btn-primary m-1"data-toggle="modal"data-target="#modal-lg" >
       <i class="fas fa-plus"></i> Add New
     </button>
     <!-- SELECT2 EXAMPLE -->
@@ -67,7 +62,7 @@
         </div>
       </div>
     </div>
-    <form  [formGroup]="userForm" enctype="multipart/form-data" class="needs-validation" (ngSubmit)="Submit()">
+    <form  [formGroup]="userForm" enctype="multipart/form-data" class="needs-validation" >
       <div class="modal fade" id="modal-lg">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
@@ -93,12 +88,17 @@
                           <!-- /.form-group -->
                           <div class="form-group">
                             <label>User Name</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              formControlName="fullName"
-                              placeholder="Enter Full Name"
-                            />
+                            <input type="text" class="form-control" formControlName="fullName" placeholder="Enter Full Name"/>
+                            <div class="row">
+                              <div *ngIf="submitted && userForm.controls.fullName.errors">
+                                <div *ngIf="submitted && userForm.controls.fullName.errors?.['required']" class="text-danger">
+                                  User Name is required!
+                                </div>
+                                <div *ngIf="submitted && userForm.controls.fullName.errors?.['maxlength']" class="text-danger">
+                                  Maximum 20 character
+                                </div>
+                              </div>
+                            </div>
                           </div>
                           <div class="form-group">
                             <label>Email</label>
@@ -108,6 +108,16 @@
                               formControlName="email"
                               placeholder="Enter Email"
                             />
+                            <div class="row">
+                              <div *ngIf="submitted && userForm.controls.email.errors">
+                                <div *ngIf="submitted && userForm.controls.email.errors?.['required']" class="text-danger">
+                                  Email is required!
+                                </div>
+                                <div *ngIf="submitted && userForm.controls.email.errors?.['email']" class="text-danger">
+                                 Invalid Email!
+                                </div>
+                              </div>
+                            </div>
                           </div>
                           <div class="form-group">
                             <label>Mobile</label>
@@ -117,6 +127,16 @@
                               formControlName="mobile"
                               placeholder="Enter Mobile"
                             />
+                            <div class="row">
+                              <div *ngIf="submitted && userForm.controls.mobile.errors">
+                                <div *ngIf="submitted && userForm.controls.mobile.errors?.['required']" class="text-danger">
+                                  Mobile is required!
+                                </div>
+                                <div *ngIf="submitted && userForm.controls.mobile.errors?.['maxlength']" class="text-danger">
+                                  Invalid Mobile No!
+                                </div>
+                              </div>
+                            </div>
                           </div>
                           <div class="form-group">
                             <label>User Type</label>
@@ -124,11 +144,18 @@
                               class="form-control select2"
                               formControlName="type"
                             >
-                              <option selected="selected">Select Type</option>
+                              <option selected="">Select Type</option>
                               <option value="A">Admin</option>
                               <option value="S">Super Admin</option>
                               <option value="U">User</option>
                             </select>
+                            <div class="row">
+                              <div *ngIf="submitted && userForm.controls.type.errors">
+                                <div *ngIf="submitted && userForm.controls.type.errors?.['required']" class="text-danger">
+                                  Please Select User Type
+                                </div>
+                              </div>
+                            </div>
                           </div>
                           <div class="form-group">
                             <label>Password</label>
@@ -138,6 +165,16 @@
                               formControlName="userPassword"
                               placeholder="Enter Password"
                             />
+                            <div class="row">
+                              <div *ngIf="submitted && userForm.controls.userPassword.errors">
+                                <div *ngIf="submitted && userForm.controls.userPassword.errors?.['required']" class="text-danger">
+                                  Password is required!
+                                </div>
+                                <div *ngIf="submitted && userForm.controls.userPassword.errors?.['minLength']" class="text-danger">
+                                  Minmum 6 character!
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
                         <div class="col-md-6">
@@ -163,7 +200,7 @@
               <button type="button" class="btn btn-danger" data-dismiss="modal">
                 Close
               </button>
-              <button type="submit"  class="btn btn-primary">
+              <button type="button" data-dismiss="modal" (click)="Submit()" class="btn btn-primary">
                 Save changes
               </button>
             </div>
