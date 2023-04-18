@@ -18,7 +18,7 @@ export class UserComponent {
   GetAllModule() {
     this.response.GetAllData('/User/getAll').subscribe((response) => {
       this.res = response;
-      console.log(this.res)
+      // console.log(this.res)
       return this.res;
     });
   }
@@ -43,8 +43,8 @@ export class UserComponent {
     userPassword: new FormControl(),
   });
   Submit(){
-    var formData=new FormData();
-    let model:IUserModel={
+     var formData=new FormData();
+    let model={
       FullName: this.userForm.value.fullName ?? "",
       Mobile: this.userForm.value.mobile ?? "",
       Email: this.userForm.value.email ?? "",
@@ -52,16 +52,17 @@ export class UserComponent {
       Type: this.userForm.value.type,
       UserPassword: this.userForm.value.userPassword,
     }
-    // formData.append("FullName",model.FullName);
-    // formData.append("Mobile",model.Mobile);
-    // formData.append("Email",model.Email);
-    // formData.append("ImageFile",this.selectedFile);
-    // formData.append("Type",model.Type);
-    // formData.append("UserPassword",model.UserPassword);
-    // console.log(formData)
-    // this.response.PostData("/User/add",formData).subscribe(
-    // (response)=>{
-    //       console.log('response',response);
-    //  });
+    formData.append("FullName",model.FullName);
+    formData.append("Mobile",model.Mobile);
+    formData.append("Email",model.Email);
+    formData.append("ImageFile",this.selectedFile);
+    formData.append("Type",model.Type);
+    formData.append("UserPassword",model.UserPassword);
+    this.response.PostData("/User/add",formData).subscribe(
+    (response)=>{
+      console.log('response',response);
+      this.GetAllModule();
+
+     });
 }
 }

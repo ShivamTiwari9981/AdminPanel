@@ -18,11 +18,20 @@
             </div>
             <div *ngif="submitted && loginForm.controls.userName.errors" class="text-danger">
               <div *ngif="submitted && loginForm.controls.userName.errors.required">
-                 User Name is required!
+
               </div>
              </div>
           </div>
-
+          <div class="row">
+            <div *ngIf="submitted && loginForm.controls.userName.errors">
+              <div *ngIf="submitted && loginForm.controls.userName.errors?.['required']" class="text-danger">
+                User Name is required!
+              </div>
+              <div *ngIf="submitted && loginForm.controls.userName.errors?.['email']" class="text-danger">
+                Invalid Email!
+              </div>
+            </div>
+          </div>
           <div class="input-group mb-3">
             <input type="password" class="form-control" [ngClass]="{'is-invalid':submitted && loginForm.controls.userPassword.errors}" name="password"  placeholder="Password" formControlName="userPassword" autocomplete="true">
             <div class="input-group-append">
@@ -39,9 +48,9 @@
               <div *ngIf="submitted && loginForm.controls.userPassword.errors?.['minlength']" class="text-danger">
                 Max length should be 6 character..
               </div>
-              <div *ngIf="submitted && loginForm.controls.userPassword.errors?.['pattern']" class="text-danger">
+              <!-- <div *ngIf="submitted && loginForm.controls.userPassword.errors?.['pattern']" class="text-danger">
                 Minimum 6 characters, at least one uppercase letter, one lowercase letter and one number..
-              </div>
+              </div> -->
             </div>
           </div>
           <div class="row">

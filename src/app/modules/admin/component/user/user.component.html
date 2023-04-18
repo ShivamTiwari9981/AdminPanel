@@ -48,7 +48,7 @@
                     <td>{{ m.fullName }}</td>
                     <td>{{ m.email }}</td>
                     <td>{{ m.mobile }}</td>
-                    <td>{{ m.image }}</td>
+                    <td>{{ m.imagePath }}</td>
                     <td>{{ m.type }}</td>
                     <td>
                       <i
@@ -125,9 +125,9 @@
                               formControlName="type"
                             >
                               <option selected="selected">Select Type</option>
-                              <option>Admin</option>
-                              <option>Super Admin</option>
-                              <option>User</option>
+                              <option value="A">Admin</option>
+                              <option value="S">Super Admin</option>
+                              <option value="U">User</option>
                             </select>
                           </div>
                           <div class="form-group">
@@ -136,7 +136,7 @@
                               type="password"
                               class="form-control"
                               formControlName="userPassword"
-                              placeholder="Enter Mobile"
+                              placeholder="Enter Password"
                             />
                           </div>
                         </div>
