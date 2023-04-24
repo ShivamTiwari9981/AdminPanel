@@ -22,7 +22,6 @@ export class UserComponent {
   GetAllUser() {
     this.response.GetAllData('/User/getAll').subscribe((response) => {
       this.res = response;
-      console.log(this.res)
       return this.res;
     });
   }

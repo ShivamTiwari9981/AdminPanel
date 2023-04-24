@@ -23,7 +23,6 @@ ngOnInit() {
     IsRemember: new FormControl(),
   })
   Submit(){
-
     this.submitted=true;
     if(this.loginForm.invalid)
     {

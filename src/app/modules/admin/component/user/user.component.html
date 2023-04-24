@@ -142,13 +142,13 @@
                             <label>User Type</label>
                             <input type="hidden" formControlName="roleType"/>
                             <select class="form-control select2" formControlName="type">
-                              <option selected="0">Select Type</option>
-                              <option *ngFor="let roleType of roles" value={{roleType.roleId}}>
+                              <option selected="selected">Select Type</option>
+                              <!-- <option *ngFor="let roleType of roles" value={{roleType.roleId}}>
                                 {{roleType.roleName}}
-                              </option>
-                              <!-- <option value="A">Admin</option>
+                              </option> -->
+                              <option value="A">Admin</option>
                               <option value="S">Super Admin</option>
-                              <option value="U">User</option> -->
+                              <option value="U">User</option>
                             </select>
                             <div class="row">
                               <div *ngIf="submitted && userForm.controls.type.errors">
