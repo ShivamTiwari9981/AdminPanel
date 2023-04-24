@@ -2,3 +2,8 @@
 button.btn.btn-primary.m-1 {
   background-color: cadetblue;
 }
+.tbl-height {
+  max-height: 250px;
+  overflow: auto;
+}
+

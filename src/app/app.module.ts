@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,7 +13,7 @@ import { AdminModule } from '../app/modules/admin/admin.module';
 import{ReactiveFormsModule,FormsModule}from '@angular/forms';
 import { ApiResponseService } from '../app/service/api-response.service';
 import { LogoutComponent } from './components/logout/logout.component';
-
+import { RoleService } from './service/role/role.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +33,7 @@ import { LogoutComponent } from './components/logout/logout.component';
     FormsModule
 
   ],
-  providers: [ApiResponseService],
+  providers: [ApiResponseService,RoleService,Title],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

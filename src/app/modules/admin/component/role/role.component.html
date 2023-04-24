@@ -1,0 +1,126 @@
+<section class="content">
+    <div class="container-fluid">
+      <button type="button"class="btn btn-primary m-1"data-toggle="modal"data-target="#modal-lg" >
+        <i class="fas fa-plus"></i> Add New
+      </button>
+      <form  [formGroup]="roleForm"  class="needs-validation" >
+        <div class="modal fade" id="modal-lg">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header bg-dark">
+                <h4 class="modal-title">Add & Update Role</h4>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <section class="content">
+                  <div class="container-fluid">
+                    <!-- SELECT2 EXAMPLE -->
+                        <div class="row">
+                          <div class="col-md-7">
+                            <!-- /.form-group -->
+                            <div class="form-group">
+                              <input type="text" class="form-control" formControlName="roleName" placeholder="Enter Role Name"/>
+                              <input type="hidden" formControlName="roleId"/>
+                              <div class="row">                                                                  
+                                <div *ngIf="submitted && roleForm.controls.roleName.errors">
+                                  <div *ngIf="submitted && roleForm.controls.roleName.errors?.['required']" class="text-danger">
+                                    Role Name is required!
+                                  </div>
+                                  <div *ngIf="submitted && roleForm.controls.roleName.errors?.['maxlength']" class="text-danger">
+                                    Maximum 20 character
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-3">
+                            <button type="button" (click)="Submit()" class="btn btn-primary">
+                              Save changes
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                </section>
+              </div>
+              <!-- <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                  Close
+                </button>
+                <button type="button" (click)="Submit()" class="btn btn-primary">
+                  Save changes
+                </button>
+              </div> -->
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+      </form>
+        
+      <!-- SELECT2 EXAMPLE -->
+      <div class="card card-default">
+        <div class="card-header bg-gray">
+          <h3 class="card-title">Role</h3>
+          <div class="card-tools">
+            <button
+              type="button"
+              class="btn btn-tool"
+              data-card-widget="collapse"
+            >
+              <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" routerLink="/admin/home">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body tbl-height">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="table table-responsive ">
+                <table class="table table-striped ">
+                  <thead class="bg-dark">
+                    <tr>
+                      <th scope="col">#</th>
+                      <!-- <th scope="col">Role Id</th> -->
+                      <th scope="col">Role Name</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let m of this.apiResponse.response">
+                      <th scope="row">{{ m.slNo }}</th>
+                      <!-- <td>{{ m.roleId }}</td> -->
+                      <td>{{ m.roleName }}</td>
+                      <td *ngIf="m.status=='O'"><img src="../../../../../assets/open.jpeg" height="20px"weight="20px" title="Open"></td>
+                      <td *ngIf="m.status=='C'"><img src="../../../../../assets/close.jpeg" title="Close" height="20px"weight="20px"></td>
+                      <td>
+                        <div  *ngIf="m.status=='O'">
+                          <button tpye="button" class="btn btn-primary" (click)="EditValue(m)" data-toggle="modal" data-target="#modal-lg" title="Edit"><i class="fas fa-edit fa-2xs"></i> Edit</button> &nbsp; 
+                          <button tpye="button" (click)="EditValue(m)" class="btn btn-danger" title="Delete"><i class="fas fa-trash"></i> Delete</button>
+                        </div>
+                        <div  *ngIf="m.status=='C'">
+                          <button tpye="button" (click)="EditValue(m)" class="btn btn-warning" title="Delete"><i class="fas fa-refresh"></i> Reopen</button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+  

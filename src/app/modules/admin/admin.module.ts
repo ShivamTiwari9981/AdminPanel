@@ -11,7 +11,8 @@ import { ContectUsComponent } from './component/contect-us/contect-us.component'
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
 import { AppViewComponent } from './component/app-view/app-view.component';
-import { UserComponent } from './component/user/user.component'
+import { UserComponent } from './component/user/user.component';
+import { RoleComponent } from './component/role/role.component'
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { UserComponent } from './component/user/user.component'
     AboutComponent,
     ContectUsComponent,
     AppViewComponent,
-    UserComponent
+    UserComponent,
+    RoleComponent
   ],
   imports: [
     CommonModule,
