@@ -13,6 +13,11 @@ import { AdminModule } from '../app/modules/admin/admin.module';
 import{ReactiveFormsModule,FormsModule}from '@angular/forms';
 import { ApiResponseService } from '../app/service/api-response.service';
 import { LogoutComponent } from './components/logout/logout.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgIf } from '@angular/common';
+import { CookieService } from 'ngx-cookie-service';
+
 
 @NgModule({
   declarations: [
@@ -30,10 +35,13 @@ import { LogoutComponent } from './components/logout/logout.component';
     NgbModule,
     AdminModule,
     ReactiveFormsModule,
-    FormsModule
-
+    FormsModule,
+    BrowserAnimationsModule,
+    NgbToastModule,
+    NgIf
   ],
-  providers: [ApiResponseService],
+
+  providers: [ApiResponseService,CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
