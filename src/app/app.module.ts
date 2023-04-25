@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,10 +12,9 @@ import { AdminModule } from '../app/modules/admin/admin.module';
 import{ReactiveFormsModule,FormsModule}from '@angular/forms';
 import { ApiResponseService } from '../app/service/api-response.service';
 import { LogoutComponent } from './components/logout/logout.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CookieService } from 'ngx-cookie-service';
 
-
+import { RoleService } from './service/role/role.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,10 +31,9 @@ import { CookieService } from 'ngx-cookie-service';
     AdminModule,
     ReactiveFormsModule,
     FormsModule,
-    BrowserAnimationsModule,
   ],
 
-  providers: [ApiResponseService,CookieService],
+  providers: [ApiResponseService,RoleService,CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
